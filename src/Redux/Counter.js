@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, View, Button } from 'react-native';
-
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { increment, decrement } from './action/index';

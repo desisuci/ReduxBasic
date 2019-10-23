@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, Button, FlatList } from 'react-native';
 import ListItem from './component/ListItem';
+import { bimdActionCreators, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addPlace } from './action';
 
 class ReduxSavePlaces extends Component {
     state = {
         placeName: '',
-        places: [],
+
     };
 
     placeSubmitHandler = () => {
@@ -28,7 +29,7 @@ class ReduxSavePlaces extends Component {
         return (
             <FlatList
                 style={styles.listContainer}
-                data={this.props.places}
+                data={this.props.dataPlaces}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={info => <ListItem placeName={info.item.value} />}
             />
@@ -37,7 +38,7 @@ class ReduxSavePlaces extends Component {
 
     render() {
         console.log('Data Props Reducer');
-        console.log(this.props);
+        console.log(this.props.dataPlaces);
         return (
             <View style={styles.container}>
                 <View style={styles.inputContainer}>
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
 //export default ReduxSaveData
 const mapStateToProps = state => {
     return {
-        places: state.places.places,
+        dataPlaces: state.dataPlaces.places,
     };
 };
 
